@@ -1,6 +1,7 @@
 import { readFile, readdir, mkdir, writeFile, cp, rm } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { createHash } from 'node:crypto';
 import { marked } from 'marked';
 import markedKatex from 'marked-katex-extension';
 
@@ -16,6 +17,9 @@ marked.use(mathExtension);
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const dist = path.join(root, 'dist');
 const config = JSON.parse(await readFile(path.join(root, 'site.config.json'), 'utf8'));
+const assetVersion = async file => createHash('sha256').update(await readFile(path.join(root, 'public', file))).digest('hex').slice(0, 12);
+const stylesheetVersion = await assetVersion('style.css');
+const imageVersion = await assetVersion('images/shark.png');
 const origin = new URL(config.url).origin;
 const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const dateLabel = value => new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' }).format(new Date(`${value}T12:00:00Z`));
@@ -60,10 +64,10 @@ const emit = async (name, content) => { const target = path.join(dist, name); aw
 const links = config.links.map(l => `<a href="${safeURL(l.url)}">${esc(l.label)}</a>`).join('');
 function shell({title = config.name, description = config.name, route = '/', content, article = false, noindex = false, math = false}) {
   const fullTitle = title === config.name ? title : `${title} — ${config.name}`;
-  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light dark"><title>${esc(fullTitle)}</title><meta name="description" content="${esc(description)}"><link rel="canonical" href="${origin}${route}">${noindex ? '<meta name="robots" content="noindex">' : ''}<meta property="og:title" content="${esc(fullTitle)}"><meta property="og:description" content="${esc(description)}"><meta property="og:type" content="${article ? 'article' : 'website'}"><meta property="og:url" content="${origin}${route}"><link rel="icon" type="image/svg+xml" href="/favicon.svg">${math ? '<link rel="stylesheet" href="/vendor/katex/katex.min.css">' : ''}<link rel="stylesheet" href="/style.css"></head><body><a class="skip-link" href="#main">Skip to content</a><div class="site-wrap"><nav class="site-nav" aria-label="Main navigation"><a href="/#thoughts">My Thoughts</a><a href="/#experience">Experience</a></nav><main id="main" tabindex="-1">${content}</main></div></body></html>`;
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light dark"><title>${esc(fullTitle)}</title><meta name="description" content="${esc(description)}"><link rel="canonical" href="${origin}${route}">${noindex ? '<meta name="robots" content="noindex">' : ''}<meta property="og:title" content="${esc(fullTitle)}"><meta property="og:description" content="${esc(description)}"><meta property="og:type" content="${article ? 'article' : 'website'}"><meta property="og:url" content="${origin}${route}"><link rel="icon" type="image/svg+xml" href="/favicon.svg">${math ? '<link rel="stylesheet" href="/vendor/katex/katex.min.css">' : ''}<link rel="stylesheet" href="/style.css?v=${stylesheetVersion}"></head><body><a class="skip-link" href="#main">Skip to content</a><div class="site-wrap"><nav class="site-nav" aria-label="Main navigation"><a href="/#thoughts">My Thoughts</a><a href="/#experience">Experience</a></nav><main id="main" tabindex="-1">${content}</main></div></body></html>`;
 }
 await emit('index.html', shell({content: `
-  <header class="profile"><div class="profile-info"><h1>${esc(config.name)}</h1><p>${esc(config.profile)}</p><div class="profile-links">${links}</div></div><img class="profile-image" src="/images/shark.png" width="400" height="400" alt="A smiling blue cartoon shark on a beach"></header>
+  <header class="profile"><div class="profile-info"><h1>${esc(config.name)}</h1><p>${esc(config.profile)}</p><div class="profile-links">${links}</div></div><img class="profile-image" src="/images/shark.png?v=${imageVersion}" width="400" height="400" alt="A smiling blue cartoon shark on a beach"></header>
   <section class="thoughts" id="thoughts" aria-labelledby="thoughts-title"><h2 id="thoughts-title">My Thoughts</h2>${posts.length ? `<ul class="post-list">${posts.map(post => `<li><a href="${post.url}">${esc(post.title)}</a><time datetime="${post.date}">${dateLabel(post.date)}</time></li>`).join('')}</ul>` : '<p class="empty-state">No posts yet.</p>'}</section>
   <section class="experience" id="experience" aria-labelledby="experience-title"><h2 id="experience-title">Experience</h2>${config.experience.map(job => `<article class="experience-row"><div class="job-heading"><h3>${esc(job.organization)}</h3><span class="period">${esc(job.period)}</span></div><p class="role">${esc(job.role)}</p><p class="job-description">${esc(job.description)}</p></article>`).join('')}</section>`}));
 for (const post of posts) {

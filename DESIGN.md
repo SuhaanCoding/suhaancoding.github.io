@@ -21,3 +21,5 @@ Math is typeset at build time with the maintained Marked KaTeX extension. Inline
 
 ## Hosting
 GitHub Pages publishes the `dist/` output through the existing workflow. Keep the existing repository and public URL.
+
+Stylesheet and profile image URLs include content hashes to prevent old browser/CDN assets from being paired with a newer page after publishing.
