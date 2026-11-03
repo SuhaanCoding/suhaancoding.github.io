@@ -3,7 +3,15 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "scripts": { "build": "node src/build.mjs", "preview": "python3 -m http.server 4173 --bind 127.0.0.1 --directory dist", "check": "node --check src/build.mjs && node --check public/site.js" },
-  "dependencies": { "marked": "15.0.12" },
-  "engines": { "node": ">=20" }
+  "scripts": {
+    "build": "node src/build.mjs",
+    "preview": "python3 -m http.server 4173 --bind 127.0.0.1 --directory dist",
+    "check": "node --check src/build.mjs"
+  },
+  "dependencies": {
+    "marked": "15.0.12"
+  },
+  "engines": {
+    "node": ">=20"
+  }
 }

@@ -1,19 +1,19 @@
 # Suhaan — personal site
 
 ## Purpose and audience
-A personal home for writing, notes, a profile, and professional background. Visitors should find something to read within a few seconds. Content-site register; no admin or CMS interface.
+A minimal personal page. Profile first, then “My Thoughts”, then experience. Only the user's writing belongs in My Thoughts. No generated essays, sample posts, invented biography, slogans, or RSS.
 
 ## Visual direction
-A blue notebook on a pale desk: quiet, personal, and precise. The signature is a large serif opening alongside a narrow notebook margin. Avoid dashboard cards, marketing claims, gradients, decorative metrics, and stock photos.
+A plain, narrow document with generous but compact spacing. System sans-serif, a 34px name, 20px section headings, ordinary blue links. No hero, sidebar, cards, decorative monogram, footer, or promotional copy.
 
 ## Tokens and ownership
-Runtime source of truth: `public/style.css`, `:root`. Cool paper `#f5f7fb`, white sheet `#ffffff`, ink `#172b4d`, secondary `#576376`, blue `#234cbd`, pale blue `#e8eff8`, highlight `#edf092`. Dark equivalents live in the same file. Georgia is the editorial face; the system sans-serif stack is for navigation and metadata. No remote fonts or font swaps. Spacing uses a 4px base; content max-width 1120px and article reading measure 680px. Subtle 8px surfaces, 1px boundaries.
+Runtime source: `public/style.css`, `:root`. Paper `#ffffff`, ink `#202124`, secondary `#65686d`, links `#244fa2`, dividers `#e5e7eb`. System dark colors use the same variables through the prefers-color-scheme media query. Maximum outer width 768px, 32px desktop padding, 24px mobile padding. Article body uses Georgia at 18px.
 
 ## Content and behavior
-Shared build-time shell owns navigation, footer, metadata, and theme control. All main content is server-rendered static HTML and readable without JavaScript. Search/type filters enhance the archive locally, preserve URL state, provide clear controls and a no-results state. Posts are Markdown with deliberately simple front matter. Drafts are excluded from HTML, search, RSS, and sitemap. Sample posts are visibly labeled everywhere. Experience is a broad overview; no résumé metrics, PDF, phone, or personal email are published.
+`site.config.json` contains only factual profile information, professional links, and broad experience summaries. Experience descriptions are the sole retained generated prose, as explicitly requested. My Thoughts lists authored posts by title/date and otherwise says “No posts yet.” No search/filter controls for an empty collection. Markdown posts only require title/date; drafts and examples are excluded. Existing writing/about/experience URLs redirect to the corresponding part of the one-page site. RSS is not generated or linked.
 
 ## Accessibility and responsive layout
-Semantic links/buttons, visible focus, skip link, local system fonts, reduced-motion support, high-contrast scrollbar fallback. Navigation wraps on narrow screens; article measure and tap targets stay usable. Theme follows the system until explicitly selected; storage failures fall back safely. No fixed-height content panes.
+Native links, skip link, visible keyboard focus, visible tokenized scrollbars with forced-color fallback. Natural document scrolling. Job headings and post dates stack on mobile. No animations, remote fonts, or JavaScript required.
 
 ## Hosting
-GitHub Pages is the requested destination. A reproducible Node build emits `dist/`; the GitHub Actions workflow deploys that directory. No Sites registration or alternate hosting is needed.
+GitHub Pages publishes the `dist/` output through the existing workflow. Keep the existing repository and public URL.
