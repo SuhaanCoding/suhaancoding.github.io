@@ -13,21 +13,27 @@
   ],
   "experience": [
     {
+      "organization": "UC San Diego",
+      "role": "Undergraduate Student Researcher",
+      "period": "Oct 2026 — Present",
+      "description": "Post-training @ Shang Data Lab."
+    },
+    {
       "organization": "Qualcomm Institute",
       "role": "Software Engineering Intern",
-      "period": "2026 — present",
+      "period": "Feb 2026 — Present",
       "description": "Building AI-assisted research tools and software for engineering workflows."
     },
     {
       "organization": "Cedar Build",
       "role": "Software Engineering Intern",
-      "period": "2026",
+      "period": "Jun 2026 — Sep 2026",
       "description": "Worked on retrieval systems and product features that help people navigate complex information."
     },
     {
       "organization": "Yonder Deep",
       "role": "Software Engineering Intern",
-      "period": "2025 — 2026",
+      "period": "Oct 2025 — Jun 2026",
       "description": "Worked on real-time control software for autonomous underwater systems."
     }
   ],
