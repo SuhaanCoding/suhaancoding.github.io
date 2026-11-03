@@ -2,9 +2,9 @@
 
 Live at https://suhaancoding.github.io.
 
-Profile, My Thoughts, and experience on one page. No sample writing or RSS.
+Profile, Notes, and experience on one page. No sample writing or RSS.
 
-## Publish a post
+## Publish a note
 
 You can publish entirely in your browser, without Codex or a terminal:
 
