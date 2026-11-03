@@ -1,0 +1,24 @@
+{
+  "name": "Suhaan Khurana",
+  "initials": "sk",
+  "url": "https://suhaancoding.github.io",
+  "tagline": "Software, systems, and a notebook of ideas.",
+  "bio": "I’m Suhaan, a data science student at UC San Diego. I build software, explore AI and systems, and use this space to work through ideas in writing.",
+  "about": [
+    "I’m studying data science at the University of California, San Diego. My work spans AI applications, software infrastructure, and the systems that connect them.",
+    "I like understanding how things work, then building something to test that understanding. That has taken me from retrieval systems and research tools to real-time software and open-source machine learning.",
+    "This site is a home for longer essays, short notes, and things I’m still figuring out. Some ideas will be polished. Others will stay open-ended."
+  ],
+  "interests": ["AI & machine learning", "Software systems", "Learning by building", "Open source"],
+  "links": [
+    {"label": "GitHub", "url": "https://github.com/SuhaanCoding"},
+    {"label": "LinkedIn", "url": "https://www.linkedin.com/in/suhaan-khurana/"}
+  ],
+  "experience": [
+    {"organization": "Qualcomm Institute", "role": "Software Engineering Intern", "period": "2026 — present", "description": "Building AI-assisted research tools and software for engineering workflows.", "tags": ["AI applications", "Research tools", "Systems"]},
+    {"organization": "Cedar Build", "role": "Software Engineering Intern", "period": "2026", "description": "Worked on retrieval systems and product features that help people navigate complex information.", "tags": ["Retrieval", "Full-stack development"]},
+    {"organization": "Yonder Deep", "role": "Software Engineering Intern", "period": "2025 — 2026", "description": "Worked on real-time control software for autonomous underwater systems.", "tags": ["Real-time systems", "Robotics", "C++"]}
+  ],
+  "openSource": "I’ve also contributed to FastVideo and explored efficient language modeling through OpenAI Parameter Golf.",
+  "education": {"school": "University of California, San Diego", "subject": "Data science", "period": "Expected 2028"}
+}

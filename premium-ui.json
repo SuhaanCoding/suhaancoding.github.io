@@ -1,0 +1,1 @@
+{"profile":"content-site","sourceRoots":["public","dist"],"commands":{"build":"npm run build","check":"npm run check"}}
