@@ -3,6 +3,14 @@ export function installWriterUI() {
   let pending = false;
   function update() {
     pending = false;
+    // Preserve native editing and spellchecking for browser writing assistants.
+    for (const input of document.querySelectorAll('textarea, [contenteditable="true"]')) {
+      const field = input.closest('[data-key-path]')?.dataset.keyPath?.split(':').at(-1);
+      const prose = !['latex','code'].includes(field);
+      input.spellcheck = prose;
+      input.setAttribute('data-gramm', String(prose));
+      if (prose && !input.lang) input.lang = 'en';
+    }
     for (const body of document.querySelectorAll('section.field[data-key-path="body"]')) {
       const parent = body.parentElement;
       if (!parent?.querySelector(':scope > section.field[data-key-path="title"]')) continue;

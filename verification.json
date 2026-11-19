@@ -13,6 +13,12 @@
     "writerDisclosure": "passed: metadata collapsed, expands on request",
     "responsive": "passed at 390px; viewport restored"
   },
-  "productionAuthentication": "GitHub signed in through Chrome. Editor credential setup remains owner action; production repository writes not yet verified.",
-  "repositoryVisibility": "Public, as owner requested after GitHub Free Pages limitation was explained."
+  "productionAuthentication": "Passed: owner completed token sign-in; live editor loaded and owner created a saved draft.",
+  "repositoryVisibility": "Public, as owner requested after GitHub Free Pages limitation was explained.",
+  "previewRegression": {
+    "cause": "Initial about:blank load consumed the CMS one-shot load listener before srcdoc arrived.",
+    "chromeLocal": "Passed: first-load document, title edits, formatted text, inline math, display integral, and rich-text updates render.",
+    "production": "Pending deployment verification",
+    "grammarly": "Passed in Chrome: extension suggested I have an apple, Accept changed the editor text, and the live preview reflected the correction with math retained."
+  }
 }

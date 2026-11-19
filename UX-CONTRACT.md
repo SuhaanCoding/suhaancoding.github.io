@@ -35,3 +35,6 @@ Successful note saves return to the owning Notes list; website saves use the sam
 
 ## Writing presentation
 Title and body precede metadata. The writer presentation adapter adds a native button with aria-expanded and aria-controls; it collapses only sibling metadata fields without moving vendor-owned nodes or changing field values. Invalid metadata expands automatically. New notes receive today’s date in UTC. Site metadata lists start collapsed. The owner elected to retain public repository visibility to keep GitHub Free Pages online.
+
+## Preview initialization and writing assistants
+The preview-frame adapter ignores the initial about:blank load until the generated srcdoc document is ready. This prevents Chrome from mounting the React root into a document that is immediately replaced. Native contenteditable and textarea prose fields allow spellchecking and Grammarly; LaTeX and code fields opt out of grammar checking. No Grammarly SDK, credentials, or script is added. The user’s existing browser extension owns suggestions and corrections.
