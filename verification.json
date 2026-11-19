@@ -1,0 +1,18 @@
+{
+  "contentTests": "7 passing",
+  "browserLocalTest": {
+    "create": "passed",
+    "read": "passed",
+    "update": "passed",
+    "delete": "passed",
+    "draftRecovery": "passed",
+    "formattedMathPreview": "passed",
+    "invalidPublicMath": "error and correction passed; draft refinement covered by automated test",
+    "profileEditor": "passed",
+    "assetUpload": "not verified: browser file chooser stalled",
+    "writerDisclosure": "passed: metadata collapsed, expands on request",
+    "responsive": "passed at 390px; viewport restored"
+  },
+  "productionAuthentication": "GitHub signed in through Chrome. Editor credential setup remains owner action; production repository writes not yet verified.",
+  "repositoryVisibility": "Public, as owner requested after GitHub Free Pages limitation was explained."
+}

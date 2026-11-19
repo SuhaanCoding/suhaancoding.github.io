@@ -37,5 +37,13 @@
       "description": "Worked on real-time control software for autonomous underwater systems."
     }
   ],
-  "profile": "Data science · UC San Diego"
+  "profile": "Data science · UC San Diego",
+  "profileImage": "/images/shark.png",
+  "profileImageAlt": "A smiling blue cartoon shark on a beach",
+  "description": "",
+  "labels": {
+    "notes": "Notes",
+    "experience": "Experience",
+    "empty": "No notes yet."
+  }
 }

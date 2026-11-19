@@ -4,7 +4,23 @@ Live at https://suhaancoding.github.io.
 
 Profile, Notes, and experience on one page. No sample writing or RSS.
 
-## Publish a note
+## Browser editor
+
+Open https://suhaancoding.github.io/admin/ (or use **Edit site** on the website).
+
+First-time sign-in: follow https://suhaancoding.github.io/admin/help.html. Create a fine-grained GitHub access token limited to this repository with Contents read/write, then enter it directly in the editor. The existing GitHub browser session by itself cannot authorize repository API writes. Never share the token in chat or commit it. The editor remembers the session until sign-out or expiration; revoke the token in GitHub if needed.
+
+- **Notes:** create, edit, duplicate, delete, and organize notes. New notes are drafts. Use sections, tags, pins, and order for curation.
+- **Website:** edit the name, profile line, image, links, experience, search description, and section labels. Add/remove/reorder experience and link entries.
+- **Assets:** upload and manage images. Supported uploads: PNG, JPEG, WebP, GIF, AVIF, and PDF; maximum editor upload size is 10 MB. Removing a referenced image can break a page, so review references before confirming.
+- **Formatting:** bold, italic, strikeout, headings, lists, task lists, links, tables, code, images, inline equations, and displayed equations. The Insert menu includes equation controls. You can switch to Markdown at any time.
+- **Preview:** uses the public site's typography and math renderer. It updates while editing. Narrow screens toggle between edit/preview; larger screens show panes together.
+- **Saving:** Save writes to GitHub; the existing publish workflow updates the live site, usually after a minute or two. A save is not an instant production deployment. Invalid public equations are caught before save; unfinished formulas can be saved as drafts. Drafts saved to this public repository remain public source files.
+- **Recovery:** the editor offers to restore browser draft backups after an interrupted session. Git history keeps prior committed versions.
+
+The content editor does not expose layout, style, workflow, or authentication files. Public pages execute no scripts. All editor libraries are pinned and bundled locally; there is no separate CMS subscription.
+
+## Publish a note using GitHub
 
 You can publish entirely in your browser, without Codex or a terminal:
 
@@ -51,7 +67,7 @@ Edit `site.config.json`. Profile facts and experience descriptions are independe
 
 ## Preview locally
 
-With Node.js 20+ and Python 3 installed:
+With Node.js 22.12+ and Python 3 installed:
 
 ```sh
 npm ci
@@ -71,3 +87,7 @@ Open http://127.0.0.1:4173. Rebuild and refresh after edits.
 - `.github/workflows/pages.yml`: publishing
 
 GitHub Pages uses the GitHub Actions source. Every commit to `main` builds and publishes `dist/`. Markdown is trusted author content. There are no visitor accounts, tracking, or backend services.
+
+## Verification
+
+Run `npm run check`, `npm test`, and `npm run build`. For browser-only CRUD testing, build with `EDITOR_TEST_SEED=1 npm run build`, serve `dist/`, and open `/admin/?test=1` on localhost. This uses a separate browser repository and never publishes test notes. Always make a normal production build before deployment; it omits the test seed.

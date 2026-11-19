@@ -1,1 +1,34 @@
-{"profile":"content-site","sourceRoots":["public","dist"],"commands":{"build":"npm run build","check":"npm run check"}}
+{
+  "profile": "product-admin",
+  "sourceRoots": [
+    "src",
+    "public"
+  ],
+  "canonicalMap": "UX-CONTRACT.md",
+  "requiredCapabilities": [
+    "Select/Listbox",
+    "Date",
+    "Form",
+    "Scrollbar",
+    "Toast",
+    "CRUD"
+  ],
+  "ownership": {
+    "Select/Listbox": "authored",
+    "Date": "native"
+  },
+  "requiredCommands": [
+    "check",
+    "test",
+    "build"
+  ],
+  "commands": {
+    "check": "npm run check",
+    "test": "npm test",
+    "build": "npm run build"
+  },
+  "evidence": {
+    "crudFullFlow": "verification.json",
+    "failurePaths": "test/content.test.mjs"
+  }
+}
