@@ -2,7 +2,7 @@
 title: Test
 date: 2026-11-19
 summary: ''
-draft: true
+draft: false
 section: ''
 tags: []
 pinned: false
