@@ -6,7 +6,9 @@ Profile, Notes, and experience on one page. No sample writing or RSS.
 
 ## Browser editor
 
-Open https://suhaancoding.github.io/admin/ (or use **Edit site** on the website).
+Open https://suhaancoding.github.io/admin/. This address is intentionally absent from public navigation. Editing still requires repository authorization.
+
+Use the top-right sun/moon button to switch themes. The public site and editor remember separate preferences.
 
 First-time sign-in: follow https://suhaancoding.github.io/admin/help.html. Create a fine-grained GitHub access token limited to this repository with Contents read/write, then enter it directly in the editor. The existing GitHub browser session by itself cannot authorize repository API writes. Never share the token in chat or commit it. The editor remembers the session until sign-out or expiration; revoke the token in GitHub if needed.
 
@@ -18,7 +20,7 @@ First-time sign-in: follow https://suhaancoding.github.io/admin/help.html. Creat
 - **Saving:** Save writes to GitHub; the existing publish workflow updates the live site, usually after a minute or two. A save is not an instant production deployment. Invalid public equations are caught before save; unfinished formulas can be saved as drafts. Drafts saved to this public repository remain public source files.
 - **Recovery:** the editor offers to restore browser draft backups after an interrupted session. Git history keeps prior committed versions.
 
-The content editor does not expose layout, style, workflow, or authentication files. Public pages execute no scripts. All editor libraries are pinned and bundled locally; there is no separate CMS subscription.
+The content editor does not expose layout, style, workflow, or authentication files. Public pages allow only the exact bundled theme script through a content security policy. All editor libraries are pinned and bundled locally; there is no separate CMS subscription.
 
 ## Publish a note using GitHub
 
@@ -91,3 +93,5 @@ GitHub Pages uses the GitHub Actions source. Every commit to `main` builds and p
 ## Verification
 
 Run `npm run check`, `npm test`, and `npm run build`. For browser-only CRUD testing, build with `EDITOR_TEST_SEED=1 npm run build`, serve `dist/`, and open `/admin/?test=1` on localhost. This uses a separate browser repository and never publishes test notes. Always make a normal production build before deployment; it omits the test seed.
+
+The editor theme adapter targets the pinned CMS 0.269.2 preference-store export. When upgrading that dependency, verify or update src/admin/cms-preferences.mjs and check both the top switch and Settings > Appearance. Open-source attribution is retained in public/editor-license.txt.

@@ -6,7 +6,7 @@
   "scripts": {
     "build": "node src/build.mjs",
     "preview": "python3 -m http.server 4173 --bind 127.0.0.1 --directory dist",
-    "check": "node --check src/build.mjs && node --check src/content.mjs && node --check src/render.mjs && node --check src/admin/editor.mjs && node --check src/admin/config.mjs && node --check src/admin/frame-compat.mjs && node --check src/admin/writer-ui.mjs && node --check src/admin/defaults.mjs",
+    "check": "node --check src/build.mjs && node --check src/content.mjs && node --check src/render.mjs && node --check src/admin/editor.mjs && node --check src/admin/config.mjs && node --check src/admin/frame-compat.mjs && node --check src/admin/writer-ui.mjs && node --check src/admin/defaults.mjs && node --check src/theme-control.mjs && node --check src/public-theme.mjs && node --check src/admin/appearance.mjs && node --check src/admin/cms-preferences.mjs",
     "test": "node --test test/*.test.mjs"
   },
   "dependencies": {

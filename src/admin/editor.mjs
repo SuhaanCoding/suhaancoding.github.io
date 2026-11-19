@@ -6,10 +6,12 @@ import { renderMarkdown, renderEquation } from '../render.mjs';
 import { validateNote, validateSite } from '../content.mjs';
 import 'katex/dist/katex.min.css';
 import './editor.css';
+import { installEditorAppearance } from './appearance.mjs';
 import { installPreviewFrameCompatibility } from './frame-compat.mjs';
 installPreviewFrameCompatibility();
 import { installWriterUI } from './writer-ui.mjs';
 installWriterUI();
+installEditorAppearance();
 
 const localTest = ['localhost','127.0.0.1'].includes(location.hostname) && new URLSearchParams(location.search).has('test');
 if (localTest) {

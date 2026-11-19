@@ -18,7 +18,13 @@
   "previewRegression": {
     "cause": "Initial about:blank load consumed the CMS one-shot load listener before srcdoc arrived.",
     "chromeLocal": "Passed: first-load document, title edits, formatted text, inline math, display integral, and rich-text updates render.",
-    "production": "Pending deployment verification",
+    "production": "Passed: live saved draft renders after refresh.",
     "grammarly": "Passed in Chrome: extension suggested I have an apple, Accept changed the editor text, and the live preview reflected the correction with math retained."
+  },
+  "appearance": {
+    "public": "Passed: light/dark, keyboard Enter, saved preference after reload, public edit link absent.",
+    "editor": "Passed: light/dark, saved preference, preview theme sync, Settings Appearance agrees with top switch.",
+    "responsive": "Editor checked at 390px; temporary viewport restored.",
+    "branding": "Local signed-in and sign-in credit hidden; live promotional infobar check pending."
   }
 }
